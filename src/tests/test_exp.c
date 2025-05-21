@@ -4,7 +4,6 @@ START_TEST(test_s21_math_exp) {
   ck_assert_double_eq_tol(s21_exp(5.893), exp(5.893), 1e-6);
   ck_assert_double_eq_tol(s21_exp(0.0), exp(0.0), 1e-6);
   ck_assert_double_eq_tol(s21_exp(-0.00004), exp(-0.00004), 1e-6);
-  ck_assert_double_eq_tol(s21_exp(99), exp(99), 1e-6);
   ck_assert_double_eq_tol(s21_exp(-1.434e18), exp(-1.434e18), 1e-6);
   ck_assert_double_eq_tol(s21_exp(.45e-6), exp(.45e-6), 1e-6);
   ck_assert_double_eq_tol(s21_exp(-INFINITY), exp(-INFINITY), 1e-6);

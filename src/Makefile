@@ -1,8 +1,8 @@
 TARGET = s21_math.a
 OBJ = objects
 CC = gcc
-CFLAGS = -std=c11 -Wall -Werror -Wextra
-TESTFLAGS = -lcheck -lm -lpthread -lrt -lsubunit --coverage
+CFLAGS = -std=c11 -Wall -Werror -Wextra -I/opt/homebrew/opt/check/include
+TESTFLAGS = -lcheck -lm -lpthread --coverage -L/opt/homebrew/opt/check/lib
 RBIN = gcov_test gcov_test-test.gcda gcov_test-test.gcno gcov_test.info report
 VALGR = valgrind -s ./
 SRCS = s21$(C)
@@ -35,7 +35,7 @@ $(OBJ):
 	$(CC) $(CFLAGS) -c $(SRCS) 
 	$(MV) $(OBJS) $(OBJSDIR)
 test: $(TESTDIR)test.c $(TARGET)
-	$(CC) $(CFLAGS) -g $(TESTDIR)test.c $(TESTDIR)test_*.c $(TESTDIR)test.h $(TARGET) -o test $(TESTFLAGS)
+	$(CC) $(CFLAGS) -g $(TESTDIR)test.c $(TESTDIR)test_*.c $(TARGET) -o test $(TESTFLAGS)
 	./test
 clean:
 	$(RM) $(OBJSDIR) test
